@@ -22,6 +22,7 @@ $ apt install -y g++-7 libaio-dev uuid-dev libtbb-dev
 ## Running a Query
 Each query can be run for a specified duration (in seconds) and with a given event generation rate (events/s)
 
+For example, to run Nexmark Q3 for 1000 seconds with an input rate of 1M events/s using FASTER as the state backend:
 ```bash
 $ cargo run --release -- --duration 1000 --rate 1000000 --queries q3_faster
 ```
