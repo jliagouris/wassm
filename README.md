@@ -11,31 +11,59 @@ The testbed supports three basic state primitives:
 3. ManagedMap (for unordered maps)
 
 
-## Install dependencies for faster-rs (ubuntu)
+## Pre-requisites for running experiments
+All of our experiments require an installation of Rust 1.38.0 and the following dependencies
+* CMake
+* g++-7 
+* libaio-dev
+* uuid-dev
+* libtbb-dev
 
-```
-$ add-apt-repository -y ppa:ubuntu-toolchain-r/test
-$ apt update
-$ apt install -y g++-7 libaio-dev uuid-dev libtbb-dev
-```
+These dependencies are required to be able to compile FASTER.
 
-## Running a Query
-Each query can be run for a specified duration (in seconds) and with a given event generation rate (events/s)
+## Running Nexmark queries
+Each query can be run for a specified duration (in seconds) and with a given event generation rate (events/s).
 
 For example, to run Nexmark Q3 for 1000 seconds with an input rate of 1M events/s using FASTER as the state backend:
 ```bash
 $ cargo run --release -- --duration 1000 --rate 1000000 --queries q3_faster
 ```
 
+To run the same query with RocksDB as the state backend:
+```bash
+$ cargo run --release -- --duration 1000 --rate 1000000 --queries q3_rocksdb
+```
 
-### Window parameters
+
+## Running workload-aware Nexmark queries
+Within the directory `nexmark_timely_faster_hand_tuned` run the following command:
+
+```
+$ cargo run --release -- --duration <duration> --rate <rate> --queries <query> 
+```
+
+where `query` is one of `q3`, `q4`, `q5`, `q6`, `q7`, `q8`
+
+
+### Running window queries
 - `window-slide`: the size of the window slide in seconds
 - `window-slice-count`: the number of slides in a window, i.e. the window size in seconds is `window-slide*window-slice-count`
 
-For example, to run a COUNT aggregation on a sliding window of 30s with 1s slide using RocksDB as the state backend:
+For example, to run a COUNT aggregation on a sliding window of 30s with 1s slide using RocksDB (with PUT/GET) as the state backend:
 ```bash
 $ cargo run --release -- --duration 1000 --rate 1000000 --queries window_2a_rocksdb_count --window-slide 1 --window-slice-count 30
 ```
+
+To run the same query using RocksDB (with MERGE) as the state backend:
+```bash
+$ cargo run --release -- --duration 1000 --rate 1000000 --queries window_2b_rocksdb_count --window-slide 1 --window-slice-count 30
+```
+
+To run the same query using FASTER as the state backend:
+```bash
+$ cargo run --release -- --duration 1000 --rate 1000000 --queries window_2_faster_count --window-slide 1 --window-slice-count 30
+```
+
 
 ## Running on multiple workers/processes
 Timely Dataflow accepts configuration via arguments supplied at runtime. These can be passed by adding an extra `--` between the line above and Timely's arguments.
@@ -44,6 +72,7 @@ For example, to run with four workers:
 ```bash
 $ cargo run --release -- --duration 1000 --rate 1000000 --queries q3_faster -- -w 4
 ```
+
 
 ## Explaining the output
 
