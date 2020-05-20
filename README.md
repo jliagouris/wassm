@@ -21,6 +21,17 @@ All of our experiments require an installation of Rust 1.38.0 and the following 
 
 These dependencies are required to be able to compile FASTER.
 
+## Configuring state backends
+
+You can configure FASTER (hash index and log size) using the `faster.config` file.
+
+You can configure RocksDB (block size, LRU size, write buffer size, hash block index size) using the following files: 
+
+* `rocksdb.config` (for RocksDB with PUT/GET)
+* `rocksdbmerge.config` (for RocksDB with MERGE in RANK queries)
+* `rocksdbmerge2.config` (for RocksDB with MERGE in COUNT queries)
+
+
 ## Running Nexmark queries
 Each query can be run for a specified duration (in seconds) and with a given event generation rate (events/s).
 
