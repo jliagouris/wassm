@@ -1,7 +1,7 @@
 use timely::dataflow::channels::pact::Exchange;
 use timely::dataflow::{Scope, Stream};
 
-use crate::queries::{NexmarkInput, NexmarkTimer};
+use crate::queries::{NexmarkInput, NexmarkTimer, assign_windows};
 use timely::dataflow::operators::generic::operator::Operator;
 use timely::dataflow::operators::map::Map;
 
