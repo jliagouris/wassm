@@ -45,7 +45,7 @@ $ cargo run --release -- --duration <duration> --rate <rate> --queries <query>
 where `query` is one of `q3`, `q4`, `q5`, `q6`, `q7`, `q8`
 
 
-### Running window queries
+## Running window queries
 
 Window queries require two more arguments:
 
