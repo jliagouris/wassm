@@ -1,6 +1,6 @@
 # Workload-aware Streaming State Management Testbed
 
-This repository contains the testbed used in the paper 'In support of workload-aware streaming state management' (HotStorage 2020).
+This repository contains the testbed used in the paper '*In support of workload-aware streaming state management*' (HotStorage 2020).
 
 The testbed is based on [Timely Dataflow](https://github.com/TimelyDataflow/timely-dataflow) and currently supports two key-value stores for backing up operator state: FASTER (via [faster-rs](https://github.com/matthewbrookes/faster-rs)) and RocksDB (via [rust-rocksdb](https://github.com/rust-rocksdb/rust-rocksdb)).
 
