@@ -5,22 +5,6 @@ use crate::queries::{NexmarkInput, NexmarkTimer};
 use timely::dataflow::operators::generic::operator::Operator;
 use timely::dataflow::operators::map::Map;
 
-pub fn assign_windows(event_time: usize,
-                      window_slide: usize,
-                      window_size: usize
-                     ) -> Vec<usize> {
-    let mut windows = Vec::new();
-    let last_window_start = event_time - (event_time + window_slide) % window_slide;
-    let num_windows = (window_size as f64 / window_slide as f64).ceil() as i64;
-    for i in 0i64..num_windows {
-        let w_id = last_window_start as i64 - (i * window_slide as i64);
-        if w_id >= 0 && (event_time < w_id  as usize + window_size) {
-            windows.push(w_id as usize);
-        }
-    }
-    windows
-}
-
 pub fn window_2_faster_rank<S: Scope<Timestamp = usize>>(
     input: &NexmarkInput,
     _nt: NexmarkTimer,
