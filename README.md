@@ -23,9 +23,9 @@ These dependencies are required to be able to compile FASTER.
 
 ## Configuring state backends
 
-You can configure FASTER (hash index and log size) using the `faster.config` file.
+You can configure FASTER (*hash index size* and *log size*) using the `faster.config` file.
 
-You can configure RocksDB (block size, LRU size, write buffer size, hash block index size) using the following files: 
+You can configure RocksDB (*block size, LRU size, write buffer size, hash block index size*) using the following files: 
 
 * `rocksdb.config` (for RocksDB with PUT/GET)
 * `rocksdbmerge.config` (for RocksDB with MERGE in RANK queries)
