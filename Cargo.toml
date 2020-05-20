@@ -1,0 +1,26 @@
+[package]
+name = "nexmark"
+version = "0.1.0"
+authors = ["Matthew Brookes <brookesm@student.ethz.ch>"]
+edition = "2018"
+
+[dependencies.faster-rs]
+git = "https://github.com/matthewbrookes/faster-rs"
+branch="deletion-logscan"
+
+[dependencies]
+bincode = "1.2.0"
+abomonation = "^0.7"
+abomonation_derive = "0.3"
+clap = "*"
+env_logger = "*"
+hdrhist = "0.5.0"
+log = "*"
+rand = "0.6"
+metrics-runtime = "*"
+serde = "*"
+serde_derive = "*"
+serde_json = "*"
+tempfile = "*"
+streaming-harness = { version = "^0.1", features = ["hdrhist-support"] }
+timely = { git = "https://github.com/jliagouris/timely-dataflow.git", branch = "state_crate" }
