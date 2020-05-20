@@ -29,7 +29,7 @@ For example, to run Nexmark Q3 for 1000 seconds with an input rate of 1M events/
 $ cargo run --release -- --duration 1000 --rate 1000000 --queries q3_faster
 ```
 
-To run the same query with RocksDB as the state backend:
+To run the same query using RocksDB as the state backend:
 ```bash
 $ cargo run --release -- --duration 1000 --rate 1000000 --queries q3_rocksdb
 ```
@@ -46,6 +46,9 @@ where `query` is one of `q3`, `q4`, `q5`, `q6`, `q7`, `q8`
 
 
 ### Running window queries
+
+Window queries require two more arguments:
+
 - `window-slide`: the size of the window slide in seconds
 - `window-slice-count`: the number of slides in a window, i.e. the window size in seconds is `window-slide*window-slice-count`
 
