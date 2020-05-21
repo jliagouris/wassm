@@ -63,7 +63,7 @@ Window queries require two more arguments:
 - `window-slide`: the size of the window slide in seconds
 - `window-slice-count`: the number of slides in a window, i.e. the window size in seconds is `window-slide*window-slice-count`
 
-For example, to run a COUNT aggregation on a 30s sliding window with 1s slide using RocksDB (with PUT/GET) as the state backend:
+For example, to run a COUNT aggregation on a 30s window with 1s slide using RocksDB (with PUT/GET) as the state backend:
 ```bash
 $ cargo run --release -- --duration 1000 --rate 1000000 --queries window_2a_rocksdb_count --window-slide 1 --window-slice-count 30
 ```
