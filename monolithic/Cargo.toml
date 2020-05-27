@@ -1,7 +1,7 @@
 [package]
 name = "nexmark"
 version = "0.1.0"
-authors = ["Matthew Brookes <brookesm@student.ethz.ch>"]
+authors = ["Matthew Brookes <brookesm@student.ethz.ch>", "John Liagouris <liagos@bu.edu>", "Vasiliki Kalavri <vkalavri@bu.edu>""]
 edition = "2018"
 
 [dependencies.faster-rs]
