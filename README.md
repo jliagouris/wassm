@@ -23,6 +23,8 @@ These dependencies are required to be able to compile FASTER.
 
 ## Configuring state backends
 
+The configuration files for FASTER and RocksDB instances are located inside the `monolithic` folder.
+
 You can configure FASTER (*hash index size* and *log size*) using the `faster.config` file.
 
 You can configure RocksDB (*block size, LRU size, write buffer size, hash block index size*) using the following files: 
@@ -47,7 +49,7 @@ $ cargo run --release -- --duration 1000 --rate 1000000 --queries q3_rocksdb
 
 
 ## Running workload-aware Nexmark queries
-Within the directory `nexmark_timely_faster_hand_tuned` run the following command:
+Within the directory `workload_aware` run the following command:
 
 ```
 $ cargo run --release -- --duration <duration> --rate <rate> --queries <query> 
